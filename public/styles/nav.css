@@ -5,6 +5,7 @@ nav {
   width: 100%;
   background-color: #4056a1;
   color: #FFFFFF;
+  position: relative;
   
 }
 
@@ -17,15 +18,9 @@ nav {
 
 .sub-header {
   display: flex;
+  justify-content: center;
   align-items: center;
-  
+  flex-direction: column;
   font-family: Source Sans Pro;
   padding-right: 1.5em;
-}
-
-.fa-solid fa-angles-down {
-  display: flex;
-  align-items: flex-end;
-  vertical-align: middle;
-  
 }

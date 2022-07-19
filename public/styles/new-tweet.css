@@ -1,7 +1,12 @@
 form {
   display: flex;
   flex-direction: column;
-  
+  width: 100%;
+}
+
+label {
+  display: flex;
+  justify-content: start;
 }
 
 .button-and-counter {
