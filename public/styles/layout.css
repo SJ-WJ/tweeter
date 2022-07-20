@@ -27,6 +27,7 @@ body {
  .container {
   display: flex;
   text-align: center;
+  flex-direction: column;
   width: 90%;
   margin: auto;
   background-color: #f4f1ec;
@@ -35,4 +36,20 @@ body {
  .new-tweet {
   display: flex;
   width: 100%;
+  padding-bottom: 60px;
+ }
+
+ .bottom-border {
+  display: flex;
+  justify-content: space-between;
+  padding-left: 10px;
+  padding-right: 10px;
+ }
+
+ .top {
+  display: flex;
+  justify-content: space-between;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 20px;
  }
