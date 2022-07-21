@@ -76,4 +76,32 @@ $(document).ready(function () {
   }
   
   renderTweets(data);
+
+
+
+  // Add an Event Listener and Prevent the Default Behaviour
+  $('#tweeting').on('submit', function(event) {
+    // prevent default
+    event.preventDefault();
+    // changing the format
+    const serializeForm = $(this).serialize();
+    console.log("serializeForm", serializeForm);
+
+    $.post('/tweets', serializeForm, () => {
+      console.log("We did it!")
+    });
+    
+
+
+  })
+  
+  
+
+
+
+
+
 });
+
+
+
