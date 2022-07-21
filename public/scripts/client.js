@@ -109,7 +109,19 @@ $(document).ready(function () {
   
   //
   //loop through array
-  
+  const checkForm = document.querySelector('#tweeting');
+    const myInput = document.querySelector('#tweet-text')
+    checkForm.addEventListener('submit', function(event) {
+      if (myInput.value === "") {
+        event.preventDefault();
+        return alert("Can't post empty tweets")
+      }
+      if (myInput > 140) {
+        event.preventDefault();
+        return alert("Exceeded the maximum amount of characters for this tweet")
+      }
+
+    })
   
   
 
