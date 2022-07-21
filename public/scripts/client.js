@@ -32,9 +32,9 @@ const data = [
   // }
 ]
 
-$(document).ready(function () {
+$(document).ready(function() {
 
-  const renderTweets = function (tweets) {
+  const renderTweets = function(tweets) {
     // loops through tweets
     const tweetContainer = $('.dynamic').html("")
     tweets.forEach(tweet => {
@@ -42,12 +42,12 @@ $(document).ready(function () {
       const $tweet = createTweetElement(tweet);
       // takes return value and appends it to the tweets container
       tweetContainer.prepend($tweet);
-  
+
     });
-  
+
   }
-  
-  const createTweetElement = function (tweetData) {
+
+  const createTweetElement = function(tweetData) {
     const $tweet = `<article class="tweet-log">
     <span class="top">
       <span>
@@ -74,56 +74,55 @@ $(document).ready(function () {
   </article>`
     return $tweet;
   }
-  
-  
-  
-  
+
+
+
+
   // Add an Event Listener and Prevent the Default Behaviour
   $('#tweeting').on('submit', function(event) {
     // prevent default
     event.preventDefault();
     // changing the format
+    const myInput = document.querySelector('#tweet-text')
+    if (myInput.value === "") {
+      return alert("Can't post empty tweets")
+    }
+
+    console.log("check", myInput.value.length);
+    if (myInput.value.length > 140) {
+      
+      // event.preventDefault();
+      return alert("Exceeded the maximum amount of characters for this tweet")
+    }
+
     const serializeForm = $(this).serialize();
     console.log("serializeForm", serializeForm);
-    
+
     $.post('/tweets', serializeForm, () => {
       console.log("We did it!")
     });
-    
-    
-    
+
+
+
+
   })
-  
-  
-  
+
+
+
   const loadTweets = function() {
-    $.ajax({ url:`http://localhost:8080/tweets`, method: 'GET',
-    dataType: 'JSON'}).then(function(response) {
+    $.ajax({
+      url: `http://localhost:8080/tweets`, method: 'GET',
+      dataType: 'JSON'
+    }).then(function (response) {
       console.log("response", response)
-      
+
       renderTweets(response);
     })
 
   }
   loadTweets();
-  
-  //
-  //loop through array
-  const checkForm = document.querySelector('#tweeting');
-    const myInput = document.querySelector('#tweet-text')
-    checkForm.addEventListener('submit', function(event) {
-      if (myInput.value === "") {
-        event.preventDefault();
-        return alert("Can't post empty tweets")
-      }
-      if (myInput > 140) {
-        event.preventDefault();
-        return alert("Exceeded the maximum amount of characters for this tweet")
-      }
 
-    })
-  
-  
+
 
 
 
