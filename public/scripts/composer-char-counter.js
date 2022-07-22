@@ -4,7 +4,7 @@ $(document).ready(function () {
   $('#tweet-text').keyup(function() {
     const charLength = $(this).val().length;
     const counter = maxLength - charLength
-    console.log("length", counter)
+   
     $('.counter').text(counter);
     
     if (counter < 0) {

@@ -36,45 +36,46 @@ $(document).ready(function() {
 
   const renderTweets = function(tweets) {
     // loops through tweets
-    const tweetContainer = $('.dynamic').html("")
     tweets.forEach(tweet => {
       // calls createTweetElement for each tweet
       const $tweet = createTweetElement(tweet);
       // takes return value and appends it to the tweets container
-      tweetContainer.prepend($tweet);
+      $('.dynamic').prepend($tweet);
+      
 
     });
 
   }
-
+  
   const createTweetElement = function(tweetData) {
     const $tweet = `<article class="tweet-log">
     <span class="top">
-      <span>
-      <img src="${tweetData.user.avatars}"/>
-      <small>${tweetData.user.name}</small>
-      </span>
-      <small>${tweetData.user.handle}</small>
+    <span>
+    <img src="${tweetData.user.avatars}"/>
+    <small>${tweetData.user.name}</small>
     </span>
-  
+    <small>${tweetData.user.handle}</small>
+    </span>
+    
     <div>
-      <div>${tweetData.content.text}</div>
+    <div>${tweetData.content.text}</div>
     </div>
-  
+    
     <footer class="bottom-border">
     <span class="date">
     ${timeago.format(tweetData.created_at)}
     </span>
     <span class="three-icons">
-      <i class="fa-solid fa-flag"></i>
-      <i class="fa-solid fa-retweet"></i>
-      <i class="fa-solid fa-heart"></i>
+    <i class="fa-solid fa-flag"></i>
+    <i class="fa-solid fa-retweet"></i>
+    <i class="fa-solid fa-heart"></i>
     </span>
     </footer>
-  </article>`
+    </article>`
     return $tweet;
   }
-
+  
+  renderTweets(data)
 
 
 
@@ -88,7 +89,7 @@ $(document).ready(function() {
       return alert("Can't post empty tweets")
     }
 
-    console.log("check", myInput.value.length);
+    // console.log("check", myInput.value.length);
     if (myInput.value.length > 140) {
       
       // event.preventDefault();
@@ -99,8 +100,24 @@ $(document).ready(function() {
     console.log("serializeForm", serializeForm);
 
     $.post('/tweets', serializeForm, () => {
-      console.log("We did it!")
+      // console.log("We did it!")
     });
+
+    $.ajax({
+      url: `/tweets`,
+      method: 'POST',
+      data: serializeForm
+    }).then(function() {
+      $.ajax(`/tweets`, {
+        method: 'GET',
+      }).then(function(response) {
+        renderTweets([response[response.length - 1]])
+        
+
+
+      })
+
+    })
 
 
 
@@ -111,20 +128,17 @@ $(document).ready(function() {
 
   const loadTweets = function() {
     $.ajax({
-      url: `http://localhost:8080/tweets`, method: 'GET',
-      dataType: 'JSON'
-    }).then(function (response) {
-      console.log("response", response)
+      url: `/tweets`, 
+      method: 'GET',
+      
+    }).then(function(response) {
 
       renderTweets(response);
     })
 
+
   }
   loadTweets();
-
-
-
-
 
 
 
