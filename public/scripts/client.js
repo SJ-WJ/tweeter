@@ -48,7 +48,9 @@ $(document).ready(function() {
   }
   
   const createTweetElement = function(tweetData) {
-    const $tweet = `<article class="tweet-log">
+    const $tweet = 
+    `<div>
+    <article class="tweet-log">
     <span class="top">
     <span>
     <img src="${tweetData.user.avatars}"/>
@@ -71,7 +73,8 @@ $(document).ready(function() {
     <i class="fa-solid fa-heart"></i>
     </span>
     </footer>
-    </article>`
+    </article>
+    </div>`
     return $tweet;
   }
   
@@ -86,14 +89,23 @@ $(document).ready(function() {
     // changing the format
     const myInput = document.querySelector('#tweet-text')
     if (myInput.value === "") {
-      return alert("Can't post empty tweets")
-    }
+      // return alert("Can't post empty tweets")
+      $("button").click(function() {
+        $('#error').text("Can't post empty tweets").slideDown();
+      })
+    } 
 
     // console.log("check", myInput.value.length);
     if (myInput.value.length > 140) {
+      // return alert("Exceeded the maximum amount of characters for this tweet")
+      $("button").click(function(){
+        $('#error').text("Exceeded the maximum amount of characters for this tweet").slideDown();
+      })
+    } 
+
+    if (myInput.value.length <= 140 && myInput.value.length !== 0) {
+      $('#error').slideUp();
       
-      // event.preventDefault();
-      return alert("Exceeded the maximum amount of characters for this tweet")
     }
 
     const serializeForm = $(this).serialize();

@@ -58,8 +58,10 @@
 
   <!-- Page-specific (main) content here -->
   <main class="container">
+    <label id="error" style="display:none"></label>
     <section class="new-tweet">
       <!-- <h2>Compose Tweet</h2> -->
+      
       <form id="tweeting" action="/tweets" method="post">
         <label for="tweet-text">What are you humming about?</label>
         <textarea name="text" id="tweet-text"></textarea>
