@@ -49,18 +49,18 @@ $(document).ready(function() {
   
   const createTweetElement = function(tweetData) {
     const $tweet = 
-    `<div>
+    `<div class="division">
     <article class="tweet-log">
     <span class="top">
-    <span>
+    <span class="icon-and-name">
     <img src="${tweetData.user.avatars}"/>
-    <small>${tweetData.user.name}</small>
+    <small class="actual-name">${tweetData.user.name}</small>
     </span>
     <small>${tweetData.user.handle}</small>
     </span>
     
     <div>
-    <div>${tweetData.content.text}</div>
+    <div class="message">${tweetData.content.text}</div>
     </div>
     
     <footer class="bottom-border">
@@ -84,29 +84,38 @@ $(document).ready(function() {
 
   // Add an Event Listener and Prevent the Default Behaviour
   $('#tweeting').on('submit', function(event) {
+    let isValid = true;
     // prevent default
     event.preventDefault();
     // changing the format
+
     const myInput = document.querySelector('#tweet-text')
     if (myInput.value === "") {
+      isValid = false;
       // return alert("Can't post empty tweets")
-      $("button").click(function() {
+      // $("button").click(function() {
         $('#error').text("Can't post empty tweets").slideDown();
-      })
+      // })
     } 
 
     // console.log("check", myInput.value.length);
     if (myInput.value.length > 140) {
+      isValid = false;
       // return alert("Exceeded the maximum amount of characters for this tweet")
-      $("button").click(function(){
+      // $("button").click(function(){
         $('#error').text("Exceeded the maximum amount of characters for this tweet").slideDown();
-      })
+      // })
     } 
 
     if (myInput.value.length <= 140 && myInput.value.length !== 0) {
       $('#error').slideUp();
       
     }
+    if (!isValid) {
+      return;
+    }
+
+  
 
     const serializeForm = $(this).serialize();
     console.log("serializeForm", serializeForm);
@@ -132,6 +141,10 @@ $(document).ready(function() {
     })
 
 
+    // Clearing form submission after tweet is submitted
+    $("#tweet-text").val("");
+
+
 
 
   })
@@ -144,7 +157,7 @@ $(document).ready(function() {
       method: 'GET',
       
     }).then(function(response) {
-
+      // $("#tweet-text").val("");
       renderTweets(response);
     })
 

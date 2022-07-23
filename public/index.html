@@ -26,6 +26,7 @@
   <link rel="stylesheet" href="/styles/header.css" type="text/css" />
   <link rel="stylesheet" href="/styles/new-tweet.css" type="text/css" />
   <link rel="stylesheet" href="/styles/tweet.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/responsive.css" type="text/css" />
 
   <!-- External JS -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -42,11 +43,12 @@
     <span class="header">tweeter</span>
     <span class="sub-header">
       <span><b>Write</b>&nbsp;a new tweet</span>
-      <span style="color: red;" class="fa-solid fa-angles-down"></span>
+      <span  style="color: red;" class="fa-solid fa-angles-down"></span>
     </span>
   </nav>
-
-  <header>
+   
+  <div class ="responsive-look">
+  <header class="profile">
     <div>
       <img src="/images/profile-hex.png">
     </div>
@@ -63,7 +65,7 @@
       <!-- <h2>Compose Tweet</h2> -->
       
       <form id="tweeting" action="/tweets" method="post">
-        <label for="tweet-text">What are you humming about?</label>
+        <label for="tweet-text"><b>What are you humming about?</b></label>
         <textarea name="text" id="tweet-text"></textarea>
         <div class="button-and-counter">
           <button type="submit">Tweet</button>
@@ -71,41 +73,9 @@
         </div>
       </form>
     </section>
-
-    <section class="dynamic">
-      <!-- <article class="tweet-log">
-          <span class="top">
-            <span>
-            <i class="fa-solid fa-user"></i>&nbsp;&nbsp;&nbsp;name
-            </span>
-            @user
-          </span>
-
-          <div>
-            <textarea>Hello World!</textarea>
-          </div>
-
-          <footer class="bottom-border">
-          <span class="date">
-            10 days ago
-          </span>
-          <span class="three-icons">
-            <i class="fa-solid fa-flag"></i>
-            <i class="fa-solid fa-retweet"></i>
-            <i class="fa-solid fa-heart"></i>
-          </span>
-          </footer>
-        </article> -->
-    </section>
-
-    <!-- <p>What are you humming about?</p>
-      <p>What are you humming about?</p>
-      <p>What are you humming about?</p>
-      <p>What are you humming about?</p>
-      <p>What are you humming about?</p>
-      <p>What are you humming about?</p>
-      <p>What are you humming about?</p> -->
-
+    
+    <section class="dynamic"></section>
+   </div>
 
   </main>
 </body>
