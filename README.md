@@ -16,3 +16,9 @@ This repository is the starter code for the project: Students will fork and clon
 
 - Express
 - Node 5.10.x or above
+
+## Screenshot of Tweeter Project
+
+Tweeter Single-Page App Main Page
+
+!["Tweeter Main PAge"](https://github.com/SJ-WJ/tweeter/blob/master/docs/Tweeter%20Main%20Page.png)
