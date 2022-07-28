@@ -6,73 +6,89 @@
 html {
   box-sizing: border-box;
 }
-*, *:before, *:after {
+
+*,
+*:before,
+*:after {
   box-sizing: inherit;
 }
 
 /*
  * Global layout stuff
  */
-
 body {
   color: #545149;
   background-color: #f4f1ec;
   font-size: 24px;
   font-family: Source Sans Pro;
-  
 }
 
 /*
  * Additional CSS can be defined below or in other CSS files, as per instructions
  */
- .container {
+.container {
   display: flex;
   text-align: center;
   flex-direction: column;
   width: 90%;
   margin: auto;
   background-color: #f4f1ec;
- }
+}
 
- .new-tweet {
+.new-tweet {
   display: flex;
   width: 100%;
   padding-bottom: 60px;
- }
+}
 
- .bottom-border {
+.bottom-border {
   display: flex;
   justify-content: space-between;
   padding-left: 10px;
   padding-right: 10px;
- }
+}
 
- .top {
+.top {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding-left: 10px;
   padding-right: 10px;
   padding-bottom: 20px;
- }
+}
 
- .division {
+.division {
   padding-top: 15px;
   padding-bottom: 15px;
- }
+}
 
- .message {
+.message {
   text-align: left;
   padding-left: 11px;
   padding-bottom: 10px;
- }
+  overflow-wrap: break-word;
+}
 
- .icon-and-name {
+.icon-and-name {
   display: flex;
- }
+}
 
- .actual-name {
+.actual-name {
   display: flex;
   align-items: center;
   padding-left: 15px;
- }
+}
+
+#error {
+  display: flex;
+  justify-content: center;
+  border-style: solid;
+  border-color: red;
+  padding: 10px;
+  border-width: medium;
+  font-family: Bungee;
+}
+
+.fa-solid:hover {
+  color: #5576D1;
+}

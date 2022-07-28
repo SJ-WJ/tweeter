@@ -1,33 +1,20 @@
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (min-width: 900px) {
-
   .container {
     display: flex;
-    
    }
   .new-tweet {
     display: flex;
-
   }
-  
-  
-  
-
 }
 
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */
 @media only screen and (min-width: 1100px) {
-
   .responsive-look {
     display: flex;
     flex-direction: row;
   }
-
-  /* .profile {
-    background-size: ;
-  } */
-
   .container {
     padding: 25px;
   }
